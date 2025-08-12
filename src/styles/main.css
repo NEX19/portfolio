@@ -1,1 +1,13 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+.text-stroke {
+    -webkit-text-stroke: 0.6px rgba(0,0,0,0.35);
+  }
+
+@media (prefers-reduced-motion: reduce) {
+    .motion-safe\\:animate-blink,
+    .motion-safe\\:animate-float,
+    .motion-safe\\:animate-* {
+      animation: none !important;
+    }
+  }
