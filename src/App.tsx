@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-// layouts
-import MainLayout from "./layouts/MainLayout.tsx";
 // pages
 import Home from "./pages/Home.tsx";
 
@@ -8,7 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainLayout />}>
+        <Route>
           <Route path="/" element={<Home />}></Route>
         </Route>
       </Routes>
