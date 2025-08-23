@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, IconButton, Link as MuiLink } from "@mui/material";
 
-/* Minimal inline SVG icons */
+/* Minimal inline SVG icons (unchanged) */
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden>
     <path
@@ -30,120 +30,80 @@ const TelegramIcon = ({ size = 24 }: { size?: number }) => (
 );
 
 /**
- * Full-bleed hero WITHOUT causing horizontal scroll.
- * - Uses calc(50% - 50vw) margins + width:100vw to avoid scrollbar mismatch.
- * - Minimal & accessible social icons.
+ * Simplified hero: content-only. Background is handled globally by FullPageVideoBackground.
  */
 const Hero: React.FC = () => (
   <Box
     component="section"
     sx={{
-      position: "relative",
-      width: "100vw",
-      marginLeft: "calc(50% - 50vw)",
-      marginRight: "calc(50% - 50vw)",
-      height: "60vh",
-      overflow: "hidden",
+      // keep vertical presence, but let page layout control full width
+      minHeight: "60vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      color: "common.white",
+      px: 2,
+      py: { xs: 4, md: 8 },
     }}
   >
-    {/* Background video: replace src with your asset or remote url */}
-    <video
-      src="back1.mp4"
-      autoPlay
-      muted
-      loop
-      playsInline
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-      }}
-      aria-hidden
-    />
+    <Box>
+      <Typography variant="h3" component="h1" sx={{ fontWeight: 700, mb: 1 }}>
+        I build fast, accessible web apps
+      </Typography>
 
-    {/* Dark overlay for contrast */}
-    <Box
-      sx={{
-        position: "absolute",
-        inset: 0,
-        background: "rgba(0,0,0,0.35)",
-      }}
-    />
+      <Typography variant="subtitle1" sx={{ opacity: 0.9, mb: 2 }}>
+        Frontend dev focused on simple UI & maintainable code.
+      </Typography>
 
-    {/* Content */}
-    <Box
-      sx={{
-        position: "relative",
-        zIndex: 1,
-        height: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        color: "common.white",
-        px: 2,
-      }}
-    >
-      <Box>
-        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, mb: 1 }}>
-          I build fast, accessible web apps
-        </Typography>
-
-        <Typography variant="subtitle1" sx={{ opacity: 0.9, mb: 2 }}>
-          Frontend dev focused on simple UI & maintainable code.
-        </Typography>
-
-        <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
-          <MuiLink
-            href="https://github.com/your-username"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
+      <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
+        <MuiLink
+          href="https://github.com/your-username"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          sx={{ color: "inherit" }}
+        >
+          <IconButton
             sx={{ color: "inherit" }}
+            size="large"
+            aria-label="github"
           >
-            <IconButton
-              sx={{ color: "inherit" }}
-              size="large"
-              aria-label="github"
-            >
-              <GithubIcon />
-            </IconButton>
-          </MuiLink>
+            <GithubIcon />
+          </IconButton>
+        </MuiLink>
 
-          <MuiLink
-            href="https://www.linkedin.com/in/your-username"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
+        <MuiLink
+          href="https://www.linkedin.com/in/your-username"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          sx={{ color: "inherit" }}
+        >
+          <IconButton
             sx={{ color: "inherit" }}
+            size="large"
+            aria-label="linkedin"
           >
-            <IconButton
-              sx={{ color: "inherit" }}
-              size="large"
-              aria-label="linkedin"
-            >
-              <LinkedInIcon />
-            </IconButton>
-          </MuiLink>
+            <LinkedInIcon />
+          </IconButton>
+        </MuiLink>
 
-          <MuiLink
-            href="https://t.me/your-username"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram"
+        <MuiLink
+          href="https://t.me/your-username"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Telegram"
+          sx={{ color: "inherit" }}
+        >
+          <IconButton
             sx={{ color: "inherit" }}
+            size="large"
+            aria-label="telegram"
           >
-            <IconButton
-              sx={{ color: "inherit" }}
-              size="large"
-              aria-label="telegram"
-            >
-              <TelegramIcon />
-            </IconButton>
-          </MuiLink>
-        </Box>
+            <TelegramIcon />
+          </IconButton>
+        </MuiLink>
       </Box>
     </Box>
   </Box>
